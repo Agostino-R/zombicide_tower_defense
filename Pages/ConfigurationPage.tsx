@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, Alert } from 'react-native';
+import { SectionList, StyleSheet, Text } from 'react-native';
 import CustomView from '../Components/CustomView';
-
-import ParameterSection from '../Components/ParameterSection';
-
+import ListItem from '../Components/ListItem';
 import {
-  StepTypeEnum,
   GameElementColorsEnum,
   SectionsEnum,
+  StepTypeEnum,
 } from '../GameData/Enums';
 import { GameElement } from '../GameData/Types';
 
@@ -30,7 +28,7 @@ const ConfigurationPage = () => {
     StepTypeEnum.SPAWN,
   ]);
 
-  const [siegeEngines, setSiegeEngines] = useState<GameElement[]>([
+  const [weapons, setWeapons] = useState<GameElement[]>([
     { name: 'Baliste', rechargeTime: 5, color: GameElementColorsEnum.BLUE },
   ]);
 
@@ -43,6 +41,7 @@ const ConfigurationPage = () => {
   ]);
 
   function onDeleteItem(indexToDelete: number, section: SectionsEnum) {
+    console.log(section);
     if (section == SectionsEnum.WAVES) {
       steps.splice(indexToDelete, 1);
       setSteps([...steps]);
@@ -52,34 +51,42 @@ const ConfigurationPage = () => {
     } else if (section == SectionsEnum.PETS) {
       pets.splice(indexToDelete, 1);
       setPets([...pets]);
-    } else if (section == SectionsEnum.SIEGE_ENGINES) {
-      siegeEngines.splice(indexToDelete, 1);
-      setSiegeEngines([...siegeEngines]);
+    } else if (section == SectionsEnum.WEAPONS) {
+      console.log(indexToDelete);
+      weapons.splice(indexToDelete, 1);
+      setWeapons([...weapons]);
     }
   }
 
   return (
     <CustomView>
       <Text style={styles.waveText}>Vague numéro : {waveNumber}</Text>
-      <ParameterSection
-        title={SectionsEnum.WAVES}
-        elemList={steps}
-        onDeleteItem={index => onDeleteItem(index, SectionsEnum.WAVES)}
-      />
-      <ParameterSection
-        title={SectionsEnum.PLAYERS}
-        elemList={players}
-        onDeleteItem={index => onDeleteItem(index, SectionsEnum.PLAYERS)}
-      />
-      <ParameterSection
-        title={SectionsEnum.PETS}
-        elemList={pets}
-        onDeleteItem={index => onDeleteItem(index, SectionsEnum.PETS)}
-      />
-      <ParameterSection
-        title={SectionsEnum.SIEGE_ENGINES}
-        elemList={siegeEngines}
-        onDeleteItem={index => onDeleteItem(index, SectionsEnum.SIEGE_ENGINES)}
+      <SectionList
+        sections={[
+          { title: SectionsEnum.WAVES, data: steps.map(x => x.toString()) },
+          {
+            title: SectionsEnum.PLAYERS,
+            data: players.map(x => x.name),
+          },
+          {
+            title: SectionsEnum.PETS,
+            data: pets.map(x => x.name),
+          },
+          {
+            title: SectionsEnum.WEAPONS,
+            data: weapons.map(x => x.name),
+          },
+        ]}
+        renderItem={({ item, index, section }) => (
+          <ListItem
+            index={index}
+            text={item}
+            section={section.title}
+            onDelete={onDeleteItem}
+          />
+        )}
+        renderSectionHeader={({ section }) => <Text>{section.title}</Text>}
+        keyExtractor={index => index}
       />
     </CustomView>
   );

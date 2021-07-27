@@ -5,6 +5,7 @@ import ListItem from './ListItem';
 
 import { GameElement } from '../GameData/Types';
 import { StepTypeEnum } from '../GameData/Enums';
+import CustomButton from './CustomButton';
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const ParameterSection = (props: Props) => {
     <View>
       <Text style={styles.titleStyle}>{props.title}</Text>
       <FlatList
+        scrollEnabled={true}
         data={props.elemList.map((x, index) => {
           return { key: index, title: x.name ? x.name : x };
         })}
@@ -38,6 +40,10 @@ const ParameterSection = (props: Props) => {
             onDelete={props.onDeleteItem}
           />
         )}
+      />
+      <CustomButton
+        title={`Ajouter ${props.title}`}
+        onPress={() => console.log(props.title)}
       />
     </View>
   );

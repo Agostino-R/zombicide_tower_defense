@@ -19,5 +19,5 @@ export enum SectionsEnum {
   WAVES = 'Vagues',
   PLAYERS = 'Joueurs',
   PETS = 'Familiers',
-  SIEGE_ENGINES = 'Engins de siège',
+  WEAPONS = 'Armes',
 }

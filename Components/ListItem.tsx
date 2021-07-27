@@ -1,15 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-
-import { IconButton, Colors } from 'react-native-paper';
-
-import { GameElement } from '../GameData/Types';
-import { StepTypeEnum } from '../GameData/Enums';
+import { StyleSheet, Text, View } from 'react-native';
+import { Colors, IconButton } from 'react-native-paper';
+import { SectionsEnum } from '../GameData/Enums';
 
 interface Props {
   index: number;
   text: string;
-  onDelete: (index: number) => void;
+  section: SectionsEnum;
+  onDelete: (index: number, section: SectionsEnum) => void;
 }
 
 const styles = StyleSheet.create({
@@ -28,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ListItem = props => {
+const ListItem = (props: Props) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{props.text}</Text>
@@ -37,7 +35,7 @@ const ListItem = props => {
         color={Colors.red500}
         size={20}
         style={styles.icon}
-        onPress={() => props.onDelete(props.index)}
+        onPress={() => props.onDelete(props.index, props.section)}
       />
     </View>
   );
