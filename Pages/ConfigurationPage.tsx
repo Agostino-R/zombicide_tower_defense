@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SectionList, StyleSheet, Text } from 'react-native';
+import CustomButton from '../Components/CustomButton';
 import CustomView from '../Components/CustomView';
 import ListItem from '../Components/ListItem';
 import {
@@ -11,6 +12,14 @@ import { GameElement } from '../GameData/Types';
 
 const styles = StyleSheet.create({
   waveText: {
+    fontSize: 20,
+    color: 'white',
+    alignSelf: 'center',
+    textAlign: 'center',
+    marginTop: '5%',
+    marginBottom: '5%',
+  },
+  sectionHeader: {
     fontSize: 20,
     color: 'white',
     alignSelf: 'center',
@@ -40,7 +49,7 @@ const ConfigurationPage = () => {
     { name: 'Chat', rechargeTime: 5, color: GameElementColorsEnum.BLUE },
   ]);
 
-  function onDeleteItem(indexToDelete: number, section: SectionsEnum) {
+  const onDeleteItem = (indexToDelete: number, section: SectionsEnum) => {
     console.log(section);
     if (section == SectionsEnum.WAVES) {
       steps.splice(indexToDelete, 1);
@@ -56,7 +65,7 @@ const ConfigurationPage = () => {
       weapons.splice(indexToDelete, 1);
       setWeapons([...weapons]);
     }
-  }
+  };
 
   return (
     <CustomView>
@@ -85,8 +94,16 @@ const ConfigurationPage = () => {
             onDelete={onDeleteItem}
           />
         )}
-        renderSectionHeader={({ section }) => <Text>{section.title}</Text>}
-        keyExtractor={index => index}
+        keyExtractor={(item, index) => item + index}
+        renderSectionHeader={({ section }) => (
+          <Text style={styles.sectionHeader}>{section.title}</Text>
+        )}
+        renderSectionFooter={({ section }) => (
+          <CustomButton
+            title={`Ajouter ${section.title}`}
+            onPress={() => console.log('coucou')}
+          />
+        )}
       />
     </CustomView>
   );
