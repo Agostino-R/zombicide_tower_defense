@@ -3,22 +3,12 @@ import { Text, StyleSheet, Alert } from 'react-native';
 
 import CustomView from '../Components/CustomView';
 import CustomButton from '../Components/CustomButton';
-
-const styles = StyleSheet.create({
-  menuTitle: {
-    fontSize: 50,
-    color: 'white',
-    alignSelf: 'center',
-    textAlign: 'center',
-    marginTop: '5%',
-    marginBottom: '5%',
-  },
-});
+import CenteredText from '../Components/CenteredText';
 
 const Menu = ({ navigation }) => {
   return (
     <CustomView>
-      <Text style={styles.menuTitle}>Zombicide Tower Defense</Text>
+      <CenteredText>Zombicide Tower Defense</CenteredText>
 
       <CustomButton
         title={'Nouvelle partie'}

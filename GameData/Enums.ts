@@ -1,6 +1,6 @@
 export enum StepTypeEnum {
   SPAWN = 'Spawn',
-  REST = 'Rien',
+  REST = 'Repos',
 }
 
 export enum GameElementColorsEnum {

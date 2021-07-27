@@ -1,6 +1,12 @@
 import React from 'react';
 import { StyleSheet, View, Button, Text } from 'react-native';
 
+interface Props {
+  title: string;
+  disabled?: boolean;
+  onPress: () => void;
+}
+
 const styles = StyleSheet.create({
   buttonStyle: {
     marginHorizontal: '15%',
@@ -8,10 +14,14 @@ const styles = StyleSheet.create({
   },
 });
 
-const CustomButton = props => {
+const CustomButton = (props: Props) => {
   return (
     <View style={styles.buttonStyle}>
-      <Button title={props.title} onPress={props.onPress} />
+      <Button
+        title={props.title}
+        disabled={props.disabled ? true : false}
+        onPress={props.onPress}
+      />
     </View>
   );
 };

@@ -9,6 +9,8 @@ import {
   StepTypeEnum,
 } from '../GameData/Enums';
 import { GameElement } from '../GameData/Types';
+import AddStepsModal from '../Components/AddStepsModal';
+import CenteredText from '../Components/CenteredText';
 
 const styles = StyleSheet.create({
   waveText: {
@@ -49,8 +51,13 @@ const ConfigurationPage = () => {
     { name: 'Chat', rechargeTime: 5, color: GameElementColorsEnum.BLUE },
   ]);
 
+  const [addStepsModalVisible, setAddStepsModalVisible] =
+    useState<boolean>(false);
+
+  const [addElementsModalVisible, setAddElementsModalVisible] =
+    useState<boolean>(false);
+
   const onDeleteItem = (indexToDelete: number, section: SectionsEnum) => {
-    console.log(section);
     if (section == SectionsEnum.WAVES) {
       steps.splice(indexToDelete, 1);
       setSteps([...steps]);
@@ -67,9 +74,19 @@ const ConfigurationPage = () => {
     }
   };
 
+  const onAddItem = (section: SectionsEnum) => {
+    console.log(section);
+    if (section == SectionsEnum.WAVES) {
+      setAddStepsModalVisible(true);
+    } else if (section == SectionsEnum.PLAYERS) {
+    } else if (section == SectionsEnum.PETS) {
+    } else if (section == SectionsEnum.WEAPONS) {
+    }
+  };
+
   return (
     <CustomView>
-      <Text style={styles.waveText}>Vague numéro : {waveNumber}</Text>
+      <CenteredText>Vague numéro : {waveNumber}</CenteredText>
       <SectionList
         sections={[
           { title: SectionsEnum.WAVES, data: steps.map(x => x.toString()) },
@@ -96,14 +113,20 @@ const ConfigurationPage = () => {
         )}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section }) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
+          <CenteredText>{section.title}</CenteredText>
         )}
         renderSectionFooter={({ section }) => (
           <CustomButton
             title={`Ajouter ${section.title}`}
-            onPress={() => console.log('coucou')}
+            onPress={() => onAddItem(section.title)}
           />
         )}
+      />
+      <AddStepsModal
+        modalVisible={addStepsModalVisible}
+        setModalVisible={setAddStepsModalVisible}
+        steps={steps}
+        setSteps={setSteps}
       />
     </CustomView>
   );
