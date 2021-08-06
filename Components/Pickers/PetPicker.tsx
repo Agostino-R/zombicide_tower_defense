@@ -1,7 +1,7 @@
 import { Picker } from '@react-native-picker/picker';
 import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { PetsEnum } from '../GameData/Enums';
+import { PetsEnum } from '../../GameData/Enums';
 
 const styles = StyleSheet.create({
   picker: {

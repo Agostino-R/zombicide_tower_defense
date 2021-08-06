@@ -1,11 +1,11 @@
 import { Picker } from '@react-native-picker/picker';
 import React, { useContext, useState } from 'react';
 import { Modal, StyleSheet, TextInput, View } from 'react-native';
-import CustomView from '../Components/CustomView';
-import { GameContext } from '../GameConfig/GameContext';
-import { StepTypeEnum } from '../GameData/Enums';
-import CenteredText from './CenteredText';
-import CustomButton from './CustomButton';
+import CustomView from '../CustomView';
+import { GameContext } from '../../GameConfig/GameContext';
+import { StepTypeEnum } from '../../GameData/Enums';
+import CenteredText from '../CenteredText';
+import CustomButton from '../CustomButton';
 
 interface Props {
   modalVisible: boolean;

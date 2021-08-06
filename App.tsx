@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import Menu from './Pages/Menu';
 import GamePage from './Pages/GamePage';
-import ConfigurationPage from './Pages/ConfigurationPage';
+import ConfigurationPage from './Pages/ConfigurationPage/ConfigurationPage';
 import {
   GameContext,
   GameStatus,

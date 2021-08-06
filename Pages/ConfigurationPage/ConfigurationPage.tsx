@@ -1,23 +1,26 @@
 import React, { useContext, useState } from 'react';
 import { SectionList, StyleSheet, Text } from 'react-native';
-import CustomButton from '../Components/CustomButton';
-import CustomView from '../Components/CustomView';
-import ListItem from '../Components/ListItem';
+import CustomButton from '../../Components/CustomButton';
+import CustomView from '../../Components/CustomView';
+import ListItem from '../../Components/ListItem';
 import {
   GameElementColorsEnum,
   GameElementEnum,
   SectionsEnum,
   StepTypeEnum,
-} from '../GameData/Enums';
-import { GameElement } from '../GameData/Types';
-import AddStepsModal from '../Components/AddStepsModal';
-import CenteredText from '../Components/CenteredText';
+} from '../../GameData/Enums';
+import { GameElement } from '../../GameData/Types';
+import AddStepsModal from '../../Components/Modals/AddStepsModal';
+import CenteredText from '../../Components/CenteredText';
 import {
   useGameContext,
   GameStatus,
   initialStatus,
   GameContext,
-} from '../GameConfig/GameContext';
+} from '../../GameConfig/GameContext';
+import AddPlayerModal from '../../Components/Modals/AddPlayerModal';
+import AddPetModal from '../../Components/Modals/AddPetModal';
+import AddWeaponModal from '../../Components/Modals/AddWeaponModal';
 
 const styles = StyleSheet.create({
   waveText: {
@@ -41,15 +44,16 @@ const styles = StyleSheet.create({
 const ConfigurationPage = () => {
   const [waveNumber, setWaveNumber] = useState<number>(0);
 
-  const [elementNatureToAdd, setElementNatureToAdd] = useState<
-    GameElementEnum | undefined
-  >(undefined);
-
   const [addStepsModalVisible, setAddStepsModalVisible] =
     useState<boolean>(false);
 
-  const [addElementsModalVisible, setAddElementsModalVisible] =
+  const [addPlayerModalVisible, setAddPlayerModalVisible] =
     useState<boolean>(false);
+
+  const [addWeaponModalVisible, setAddWeaponModalVisible] =
+    useState<boolean>(false);
+
+  const [addPetModalVisible, setAddPetModalVisible] = useState<boolean>(false);
 
   const { status, setStatus } = useGameContext();
 
@@ -70,14 +74,11 @@ const ConfigurationPage = () => {
     if (section == SectionsEnum.WAVES) {
       setAddStepsModalVisible(true);
     } else if (section == SectionsEnum.PLAYERS) {
-      setElementNatureToAdd(GameElementEnum.PLAYER);
-      setAddElementsModalVisible(true);
+      setAddPlayerModalVisible(true);
     } else if (section == SectionsEnum.PETS) {
-      setElementNatureToAdd(GameElementEnum.PET);
-      setAddElementsModalVisible(true);
+      setAddPetModalVisible(true);
     } else if (section == SectionsEnum.WEAPONS) {
-      setElementNatureToAdd(GameElementEnum.WEAPON);
-      setAddElementsModalVisible(true);
+      setAddWeaponModalVisible(true);
     }
   };
 
@@ -125,6 +126,18 @@ const ConfigurationPage = () => {
       <AddStepsModal
         modalVisible={addStepsModalVisible}
         setModalVisible={setAddStepsModalVisible}
+      />
+      <AddPlayerModal
+        modalVisible={addPlayerModalVisible}
+        setModalVisible={setAddPlayerModalVisible}
+      />
+      <AddPetModal
+        modalVisible={addPetModalVisible}
+        setModalVisible={setAddPetModalVisible}
+      />
+      <AddWeaponModal
+        modalVisible={addWeaponModalVisible}
+        setModalVisible={setAddWeaponModalVisible}
       />
     </CustomView>
   );

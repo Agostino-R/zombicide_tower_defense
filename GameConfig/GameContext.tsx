@@ -1,6 +1,7 @@
 import React, { Children, createContext, useContext, useState } from 'react';
 import { StepTypeEnum } from '../GameData/Enums';
 import { GameElement } from '../GameData/Types';
+import { generateInitialStatus } from './utils';
 
 export interface GameStatus {
   waveNumber: number;
@@ -15,13 +16,7 @@ export type GameContextType = {
   setStatus: (c: GameStatus) => void;
 };
 
-export const initialStatus: GameStatus = {
-  waveNumber: 0,
-  steps: [] as StepTypeEnum[],
-  weapons: [] as GameElement[],
-  players: [] as GameElement[],
-  pets: [] as GameElement[],
-};
+export const initialStatus: GameStatus = generateInitialStatus();
 
 export const GameContext = createContext<GameContextType>({
   status: initialStatus, // set a default value

@@ -3,13 +3,10 @@ import { GameElement } from '../GameData/Types';
 
 export function retrieveGameObjectRecharge(
   elemNature: GameElementEnum,
-  type: WeaponsEnum | PetsEnum | undefined,
+  type?: WeaponsEnum | PetsEnum,
 ) {
   const config = require('../GameConfig/GameElementsConfig.json');
-  console.log(config);
-  console.log(elemNature);
-  console.log(type);
   return elemNature != GameElementEnum.PLAYER
-    ? config.elemNature.type.recharge
-    : config.elemNature.recharge;
+    ? parseInt(config[elemNature][type]['recharge'])
+    : parseInt(config[elemNature]['recharge']);
 }
