@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { Colors, IconButton } from 'react-native-paper';
 import { GameElementColorsEnum, SectionsEnum } from '../GameData/Enums';
 import { GameElement } from '../GameData/Types';
-import CustomButton from './CustomButton';
 
 interface Props {
   gameElement: GameElement;

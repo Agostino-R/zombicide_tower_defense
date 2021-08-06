@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CenteredText from '../Components/CenteredText';
 import CustomButton from '../Components/CustomButton';
 import CustomView from '../Components/CustomView';
