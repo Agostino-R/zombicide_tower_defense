@@ -1,0 +1,33 @@
+{
+  "Joueurs": {
+    "recharge": 5
+  },
+  "Familiers": {
+    "Nucifer": {
+      "recharge": 3
+    },
+    "Vatan": {
+      "recharge": 3
+    },
+    "Magog": {
+      "recharge": 3
+    },
+    "Gog": {
+      "recharge": 3
+    },
+    "Vanadis": {
+      "recharge": 3
+    },
+    "Seth": {
+      "recharge": 3
+    }
+  },
+  "Armes": {
+    "Trébuchet": {
+      "recharge": 3
+    },
+    "Baliste": {
+      "recharge": 5
+    }
+  }
+}

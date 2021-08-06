@@ -1,24 +1,15 @@
-import React, { useState } from 'react';
-import {
-  Modal,
-  Pressable,
-  Text,
-  StyleSheet,
-  View,
-  TextInput,
-} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+import React, { useContext, useState } from 'react';
+import { Modal, StyleSheet, TextInput, View } from 'react-native';
 import CustomView from '../Components/CustomView';
+import { GameContext } from '../GameConfig/GameContext';
+import { StepTypeEnum } from '../GameData/Enums';
 import CenteredText from './CenteredText';
 import CustomButton from './CustomButton';
-import { StepTypeEnum } from '../GameData/Enums';
-import { white } from 'react-native-paper/lib/typescript/styles/colors';
 
 interface Props {
   modalVisible: boolean;
   setModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  steps: StepTypeEnum[];
-  setSteps: React.Dispatch<React.SetStateAction<StepTypeEnum[]>>;
 }
 
 const styles = StyleSheet.create({
@@ -42,6 +33,7 @@ const AddStepsModal = (props: Props) => {
     StepTypeEnum.SPAWN,
   );
   const [inputError, setInputError] = useState<boolean>(false);
+  const { status, setStatus } = useContext(GameContext);
 
   const checkTextValidity = text => {
     setNumText(text);
@@ -59,11 +51,10 @@ const AddStepsModal = (props: Props) => {
 
   const onValidate = () => {
     props.setModalVisible(!props.modalVisible);
-    let tmp = props.steps;
     for (let i = 0; i < numSteps; i++) {
-      tmp.push(selectedStepType);
+      status.steps.push(selectedStepType);
     }
-    props.setSteps(tmp);
+    setStatus({ ...status });
   };
 
   return (
@@ -75,7 +66,6 @@ const AddStepsModal = (props: Props) => {
         props.setModalVisible(!props.modalVisible);
       }}>
       <CustomView>
-        <CenteredText>Hello World!</CenteredText>
         <CenteredText>Nombre de tours de vagues à ajouter:</CenteredText>
         <TextInput
           style={styles.numSteps}

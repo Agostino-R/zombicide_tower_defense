@@ -7,18 +7,30 @@ import { NavigationContainer } from '@react-navigation/native';
 import Menu from './Pages/Menu';
 import GamePage from './Pages/GamePage';
 import ConfigurationPage from './Pages/ConfigurationPage';
+import {
+  GameContext,
+  GameStatus,
+  initialStatus,
+} from './GameConfig/GameContext';
+import { useState } from 'react';
 
 const Drawer = createDrawerNavigator();
 
 function App() {
+  const [status, setStatus] = useState<GameStatus>(initialStatus);
   return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Menu" component={Menu} />
-        <Drawer.Screen name="GamePage" component={GamePage} />
-        <Drawer.Screen name="ConfigurationPage" component={ConfigurationPage} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <GameContext.Provider value={{ status, setStatus }}>
+      <NavigationContainer>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Menu" component={Menu} />
+          <Drawer.Screen name="GamePage" component={GamePage} />
+          <Drawer.Screen
+            name="ConfigurationPage"
+            component={ConfigurationPage}
+          />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </GameContext.Provider>
   );
 }
 

@@ -12,7 +12,7 @@ export enum GameElementColorsEnum {
   GREEN = 'green',
   PINK = 'plum',
   YELLOW = 'yellow',
-  GRAY = 'slategray ',
+  GRAY = 'slategray',
 }
 
 export enum SectionsEnum {
@@ -20,4 +20,24 @@ export enum SectionsEnum {
   PLAYERS = 'Joueurs',
   PETS = 'Familiers',
   WEAPONS = 'Armes',
+}
+
+export enum GameElementEnum {
+  PLAYER = 'Joueurs',
+  PET = 'Familiers',
+  WEAPON = 'Armes',
+}
+
+export enum WeaponsEnum {
+  TREBUCHET = 'Trébuchet',
+  BALISTE = 'Baliste',
+}
+
+export enum PetsEnum {
+  NUCIFER = 'Nucifer',
+  VATAN = 'Vatan',
+  MAGOG = 'Magog',
+  GOG = 'Gog',
+  VANADIS = 'Vanadis',
+  SETH = 'Seth',
 }
