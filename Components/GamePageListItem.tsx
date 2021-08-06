@@ -29,6 +29,7 @@ const GamePageListItem = (props: Props) => {
   const [precedentReuseTime, setPrecedentReuseTime] = useState<number>(0);
   const [lastTimeButtonPressed, setLastTimeButtonPressed] = useState<number>(0);
   const [textColor, setTextColor] = useState(GameElementColorsEnum.GRAY);
+  const [buttonDisabled, setButtonDisabled] = useState<boolean>(false);
 
   useEffect(() => {
     const tmp = timeBeforeReuse;
@@ -51,7 +52,15 @@ const GamePageListItem = (props: Props) => {
     }
   }, [precedentReuseTime, timeBeforeReuse]);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    if (timeBeforeReuse != 0) {
+      setButtonDisabled(true);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [timeBeforeReuse]);
+
+  useEffect(() => {
     const unsubscribe = props.navigation.addListener('blur', () => {
       setTimeBeforeReuse(0);
       setPrecedentReuseTime(0);
@@ -78,6 +87,7 @@ const GamePageListItem = (props: Props) => {
       <View style={styles.buttons}>
         <Button
           title={props.section == SectionsEnum.WEAPONS ? 'recharger' : 'mort'}
+          disabled={buttonDisabled}
           onPress={() => {
             setTextColor(GameElementColorsEnum.RED);
             setLastTimeButtonPressed(props.currentWaveNumber);

@@ -75,8 +75,6 @@ const ConfigurationPage = ({ navigation }) => {
   };
 
   useEffect(() => {
-    console.log(status.players);
-    console.log(status.steps);
     if (status.players.length == 0 || status.steps.length == 0) {
       setValidateButtonDisabled(true);
     } else {
