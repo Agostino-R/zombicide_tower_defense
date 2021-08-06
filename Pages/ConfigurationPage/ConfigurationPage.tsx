@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { SectionList, StyleSheet } from 'react-native';
 import CenteredText from '../../Components/CenteredText';
 import CustomButton from '../../Components/CustomButton';
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const ConfigurationPage = () => {
+const ConfigurationPage = ({ navigation }) => {
   const [waveNumber, setWaveNumber] = useState<number>(0);
 
   const [addStepsModalVisible, setAddStepsModalVisible] =
@@ -45,6 +45,9 @@ const ConfigurationPage = () => {
   const [addPetModalVisible, setAddPetModalVisible] = useState<boolean>(false);
 
   const { status, setStatus } = useGameContext();
+
+  const [validateButtonDisabled, setValidateButtonDisabled] =
+    useState<boolean>(true);
 
   const onDeleteItem = (indexToDelete: number, section: SectionsEnum) => {
     if (section == SectionsEnum.WAVES) {
@@ -70,6 +73,16 @@ const ConfigurationPage = () => {
       setAddWeaponModalVisible(true);
     }
   };
+
+  useEffect(() => {
+    console.log(status.players);
+    console.log(status.steps);
+    if (status.players.length == 0 || status.steps.length == 0) {
+      setValidateButtonDisabled(true);
+    } else {
+      setValidateButtonDisabled(false);
+    }
+  }, [status]);
 
   return (
     <CustomView>
@@ -127,6 +140,11 @@ const ConfigurationPage = () => {
       <AddWeaponModal
         modalVisible={addWeaponModalVisible}
         setModalVisible={setAddWeaponModalVisible}
+      />
+      <CustomButton
+        title={'VALIDER'}
+        disabled={validateButtonDisabled}
+        onPress={() => navigation.navigate('GamePage')}
       />
     </CustomView>
   );

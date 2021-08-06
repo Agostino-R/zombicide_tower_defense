@@ -43,6 +43,7 @@ const AddPlayerModal = (props: Props) => {
       color: playerColor,
     });
     setStatus({ ...status });
+    setPlayerName('');
   };
 
   return (

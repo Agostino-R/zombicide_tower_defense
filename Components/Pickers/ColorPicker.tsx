@@ -24,11 +24,11 @@ const ColorPicker = (props: Props) => {
 
   const pickerValues: any = useMemo(() => {
     let colorPickers = [];
-    for (const color of Object.values(GameElementColorsEnum)) {
+    for (const [colorName, color] of Object.entries(GameElementColorsEnum)) {
       colorPickers.push(
         <Picker.Item
           key={color}
-          label={color}
+          label={colorName}
           value={color}
           style={{ color: color }}
         />,

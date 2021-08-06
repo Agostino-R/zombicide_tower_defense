@@ -55,6 +55,7 @@ const AddStepsModal = (props: Props) => {
       status.steps.push(selectedStepType);
     }
     setStatus({ ...status });
+    setNumText(0);
   };
 
   return (

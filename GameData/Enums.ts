@@ -4,15 +4,15 @@ export enum StepTypeEnum {
 }
 
 export enum GameElementColorsEnum {
-  LIGHT_BLUE = 'aqua',
-  BLUE = 'dodgerblue ',
-  VIOLET = 'blueviolet',
-  BROWN = 'brown',
-  RED = 'crimson',
-  GREEN = 'green',
-  PINK = 'plum',
-  YELLOW = 'yellow',
-  GRAY = 'slategray',
+  LIGHT_BLUE = '#00FFFF',
+  BLUE = '#1E90FF',
+  VIOLET = '#8A2BE2',
+  BROWN = '#FFE4C4',
+  RED = '#DC143C',
+  GREEN = '#006400',
+  PINK = '#DDA0DD',
+  YELLOW = '#FFD700',
+  GRAY = '#708090',
 }
 
 export enum SectionsEnum {

@@ -13,6 +13,7 @@ import {
   initialStatus,
 } from './GameConfig/GameContext';
 import { useState } from 'react';
+import EndPage from './Pages/EndPage';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,6 +29,7 @@ function App() {
             name="ConfigurationPage"
             component={ConfigurationPage}
           />
+          <Drawer.Screen name="EndPage" component={EndPage} />
         </Drawer.Navigator>
       </NavigationContainer>
     </GameContext.Provider>
