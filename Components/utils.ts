@@ -1,5 +1,4 @@
 import { GameElementEnum, PetsEnum, WeaponsEnum } from '../GameData/Enums';
-import { GameElement } from '../GameData/Types';
 
 export function retrieveGameObjectRecharge(
   elemNature: GameElementEnum,

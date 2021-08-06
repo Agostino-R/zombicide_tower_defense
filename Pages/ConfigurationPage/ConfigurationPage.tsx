@@ -1,26 +1,15 @@
-import React, { useContext, useState } from 'react';
-import { SectionList, StyleSheet, Text } from 'react-native';
+import React, { useState } from 'react';
+import { SectionList, StyleSheet } from 'react-native';
+import CenteredText from '../../Components/CenteredText';
 import CustomButton from '../../Components/CustomButton';
 import CustomView from '../../Components/CustomView';
 import ListItem from '../../Components/ListItem';
-import {
-  GameElementColorsEnum,
-  GameElementEnum,
-  SectionsEnum,
-  StepTypeEnum,
-} from '../../GameData/Enums';
-import { GameElement } from '../../GameData/Types';
-import AddStepsModal from '../../Components/Modals/AddStepsModal';
-import CenteredText from '../../Components/CenteredText';
-import {
-  useGameContext,
-  GameStatus,
-  initialStatus,
-  GameContext,
-} from '../../GameConfig/GameContext';
-import AddPlayerModal from '../../Components/Modals/AddPlayerModal';
 import AddPetModal from '../../Components/Modals/AddPetModal';
+import AddPlayerModal from '../../Components/Modals/AddPlayerModal';
+import AddStepsModal from '../../Components/Modals/AddStepsModal';
 import AddWeaponModal from '../../Components/Modals/AddWeaponModal';
+import { useGameContext } from '../../GameConfig/GameContext';
+import { SectionsEnum } from '../../GameData/Enums';
 
 const styles = StyleSheet.create({
   waveText: {

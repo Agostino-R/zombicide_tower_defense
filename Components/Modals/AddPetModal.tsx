@@ -1,19 +1,17 @@
-import { Picker } from '@react-native-picker/picker';
 import React, { useContext, useState } from 'react';
-import { Modal, StyleSheet, TextInput, View } from 'react-native';
-import CustomView from '../CustomView';
+import { Modal, StyleSheet } from 'react-native';
 import { GameContext } from '../../GameConfig/GameContext';
 import {
   GameElementColorsEnum,
   GameElementEnum,
   PetsEnum,
-  StepTypeEnum,
 } from '../../GameData/Enums';
 import CenteredText from '../CenteredText';
-import ColorPicker from '../Pickers/ColorPicker';
 import CustomButton from '../CustomButton';
-import { retrieveGameObjectRecharge } from '../utils';
+import CustomView from '../CustomView';
+import ColorPicker from '../Pickers/ColorPicker';
 import PetPicker from '../Pickers/PetPicker';
+import { retrieveGameObjectRecharge } from '../utils';
 
 interface Props {
   modalVisible: boolean;

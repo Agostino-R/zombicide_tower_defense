@@ -1,9 +1,8 @@
 import React from 'react';
-import { Text, StyleSheet, Alert } from 'react-native';
-
-import CustomView from '../Components/CustomView';
-import CustomButton from '../Components/CustomButton';
+import { Alert } from 'react-native';
 import CenteredText from '../Components/CenteredText';
+import CustomButton from '../Components/CustomButton';
+import CustomView from '../Components/CustomView';
 
 const Menu = ({ navigation }) => {
   return (
