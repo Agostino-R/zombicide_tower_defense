@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 });
 
 const AddStepsModal = (props: Props) => {
-  const [numSteps, setNumText] = React.useState<number | undefined>(0);
+  const [numSteps, setNumText] = useState<number | undefined>(0);
   const [selectedStepType, setSelectedStepType] = useState<StepTypeEnum>(
     StepTypeEnum.SPAWN,
   );

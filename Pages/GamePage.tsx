@@ -18,7 +18,7 @@ const GamePage = ({ navigation }) => {
     }
   }, [gameEnd]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const unsubscribe = navigation.addListener('blur', () => {
       setStatus(generateInitialStatus());
     });
